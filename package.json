@@ -1,0 +1,31 @@
+{
+  "name": "recipen",
+  "version": "1.0.0",
+  "description": "CONCEPT DESIGN",
+  "main": "index.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-react-views": "^0.11.0",
+    "js-sha256": "^0.9.0",
+    "method-override": "^3.0.0",
+    "node": "^11.13.0",
+    "pg": "^7.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claucanchin/recipen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claucanchin/recipen/issues"
+  },
+  "homepage": "https://github.com/claucanchin/recipen#readme"
+}

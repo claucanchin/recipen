@@ -3,7 +3,7 @@ DROP TABLE recipes;
 DROP TABLE ingredients;
 DROP TABLE recipes_ingredients;
 DROP TABLE instructions;
-DROP TABLE tags;
+DROP TABLE category;
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS recipes_ingredients (
     id SERIAL PRIMARY KEY,
     recipes_id INTEGER,
     ingredients_id INTEGER,
-    amount INTEGER,
+    amount TEXT,
     unit TEXT
 );
 
