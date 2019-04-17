@@ -7,28 +7,32 @@ module.exports = (dbPoolInstance) => {
 
   // `dbPoolInstance` is accessible within this function scope
 
-  let getAllRecipes = (callback) => {
+  let getAll = callback => {
 
-    let queryString = 'SELECT * FROM recipes';
+    const queryString = 'SELECT * FROM recipes';
 
     dbPoolInstance.query(queryString, (error, result) => {
+
       if (error) {
-
-        console.error('Query Error: ', error.stack);
-        response.send('Query Error');
+        callback(error, null);
       } else {
-
-        // invoke callback function with results after query has executed
-
-        console.log("recipes result.rows: ");
-        // console.log(result.rows);
-        // callback(result.rows);
-
+        callback(null, result.rows)
       }
+
     });
   };
 
+  let getOne = (request,callback) => {
+
+    const queryString = 'SELECT * FROM recipes WHERE id=' + request.params.id;
+
+    dbPoolInstance.query(queryString, (err, result) => {
+        err ? callback(error, null) : callback(null, result.rows);
+    })
+  };
+
   return {
-    getAllRecipes
+    getAll,
+    getOne
   };
 };

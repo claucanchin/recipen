@@ -1,19 +1,21 @@
 module.exports = (db) => {
 
-    let recipeRequestHandler = (request, response) => {
+    let allRecipes = (request, response) => {
 
-        let allRecipes = db.recipes.getAllRecipes();
-        console.log("hello hello hello hello " + allRecipes);
+        db.recipes.getAll((error, allRecipes) => {
+            response.render('recipes/all', { allRecipes });
+        })
+    };
 
-        let data = { allRecipes: allRecipes };
-
-        response.render('recipes', data);
-
-
+    let getRecipeById = (request, response) => {
+        db.recipes.getOne(request, (error, recipe) => {
+            response.render('recipes/recipe', { recipe });
+        })
     };
 
     return {
-        recipeRequestHandler: recipeRequestHandler,
+        allRecipes: allRecipes,
+        getRecipeById: getRecipeById,
     };
 
 };
