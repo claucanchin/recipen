@@ -10,7 +10,7 @@ class Layout extends React.Component {
 
                 <title>{this.props.title}</title>
             </head>
-
+                <script src="/js/script.js"></script>
             <body>
             {this.props.children}
             </body>

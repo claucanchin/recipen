@@ -2,7 +2,7 @@ DROP TABLE users;
 DROP TABLE recipes;
 DROP TABLE ingredients;
 DROP TABLE recipes_ingredients;
-DROP TABLE instructions;
+-- DROP TABLE instructions;
 DROP TABLE categories;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS recipes (
     cook_time INTEGER,
     contributor TEXT,
     created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    updated_at TIMESTAMP,
+    instructions JSONB
 );
 
 CREATE TABLE IF NOT EXISTS ingredients (
@@ -38,12 +39,12 @@ CREATE TABLE IF NOT EXISTS recipes_ingredients (
     unit TEXT
 );
 
-CREATE TABLE IF NOT EXISTS instructions (
-    id SERIAL PRIMARY KEY,
-    step INTEGER,
-    instruction TEXT,
-    recipes_id INTEGER
-);
+-- CREATE TABLE IF NOT EXISTS instructions (
+--     id SERIAL PRIMARY KEY,
+--     step INTEGER,
+--     instruction TEXT,
+--     recipes_id INTEGER
+-- );
 
 CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,

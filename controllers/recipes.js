@@ -1,7 +1,6 @@
 module.exports = (db) => {
 
     let allRecipes = (request, response) => {
-
         db.recipes.getAll((error, allRecipes) => {
             response.render('recipes/all', { allRecipes });
         })
