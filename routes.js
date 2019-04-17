@@ -16,7 +16,15 @@ module.exports = (app, allModels) => {
 
   const recipeController = require('./controllers/recipes')(allModels);
 
-  app.get('/recipes', recipeController.allRecipes);
-  app.get('/recipes/:id', recipeController.getRecipeById)
-  // app.post('/recipes/new')
+    app.get('/recipes/new', recipeController.recipeForm);
+    app.post('/recipes', recipeController.createRecipe);
+
+    app.get('/recipes', recipeController.allRecipes);
+    app.get('/recipes/:id', recipeController.getRecipeById);
+
+    app.get('/recipes/:id/edit', recipeController.editForm);
+    app.put('/recipes/:id/', recipeController.updateRecipe);
+
+    // app.get('/testwin', recipeController.test);
+
 };

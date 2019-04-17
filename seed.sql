@@ -2,7 +2,7 @@ INSERT INTO users(username, password) VALUES ('admin', 'admin1234');
 
 
 INSERT INTO recipes(name, description, image, prep_time, cook_time, contributor, created_at, updated_at) VALUES ('Fried Green Tomatoes', 'You can also fry up red tomatoes with this recipe but make sure they are not over ripe or they will be mushy. Serve these tomatoes outside with a glass of iced tea one summer night and enjoy the sunset with someone you love.', 'https://bit.ly/2KFNsyl', '5', '15', 'whistle_stop91', '2019-03-11 17:15:32', '2019-03-26 09:16:01');
-INSERT INTO recipes(name, description, image, prep_time, cook_time, contributor, created_at, updated_at) VALUES ('Hard Boiled Egg', 'The softest hard boiled egg for the winter time. Can also be used as hand warmer.', 'https://airfryer.cooking/wp-content/uploads/2018/01/HardboiledEggs-Large.jpg', '1', '10', 'egg_man53', '2019-03-15 17:11:32', '2019-04-01 10:18:01');
+INSERT INTO recipes(name, description, image, prep_time, cook_time, contributor, created_at, updated_at) VALUES ('Hard Boiled Egg', 'The softest hard boiled egg for the winter time. Can also be used as hand warmer.', 'https://airfryer.cooking/wp-content/uploads/2018/01/HardboiledEggs-Large.jpg', '2', '10', 'egg_man53', '2019-03-15 17:11:32', '2019-04-01 10:18:01');
 
 INSERT INTO ingredients(name, food_group, calories) VALUES ('green tomato(es)', 'Fruit', '18');
 INSERT INTO ingredients(name, food_group, calories) VALUES ('egg(s)', 'Poultry', '155');

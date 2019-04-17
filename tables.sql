@@ -3,7 +3,7 @@ DROP TABLE recipes;
 DROP TABLE ingredients;
 DROP TABLE recipes_ingredients;
 DROP TABLE instructions;
-DROP TABLE category;
+DROP TABLE categories;
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -45,8 +45,13 @@ CREATE TABLE IF NOT EXISTS instructions (
     recipes_id INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS category (
+CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name TEXT,
     recipes_id INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS test (
+    id SERIAL PRIMARY KEY,
+    instructions JSONB
 );
