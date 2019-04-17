@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS categories (
     recipes_id INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS test (
-    id SERIAL PRIMARY KEY,
-    instructions JSONB
-);
+-- CREATE TABLE IF NOT EXISTS test (
+--     id SERIAL PRIMARY KEY,
+--     instructions JSONB
+-- );

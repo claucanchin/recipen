@@ -19,7 +19,7 @@ module.exports = (db) => {
 
     let createRecipe = (request, response) => {
         db.recipes.createOne(request, (error, recipe) => {
-            response.redirect(`/recipes/${recipe[0].id}`);
+            response.redirect(`recipes/${recipe[0].id}`);
         })
     };
 
@@ -31,10 +31,22 @@ module.exports = (db) => {
 
     let updateRecipe = (request, response) => {
         db.recipes.updateOne(request, (error, recipe) => {
-            console.log(recipe);
-            response.redirect(`/recipes/${recipe[0].id}`);
+            response.redirect(`recipes/${recipe[0].id}`);
         })
     };
+
+    let deleteForm = (request, response) => {
+        db.recipes.getOne(request, (error, recipe) => {
+            response.render('recipes/delete', { recipe });
+        })
+    };
+
+    let deleteRecipe = (request, response) => {
+        db.recipes.deleteOne(request, (error, recipe) => {
+            response.redirect('/recipes');
+        })
+    };
+
 
     // let test = (request, response) => {
     //     db.recipes.testOne(request, (error, recipe) => {
@@ -50,6 +62,8 @@ module.exports = (db) => {
         createRecipe: createRecipe,
         editForm: editForm,
         updateRecipe: updateRecipe,
+        deleteForm: deleteForm,
+        deleteRecipe: deleteRecipe,
         // test: test,
     };
 

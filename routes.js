@@ -23,7 +23,10 @@ module.exports = (app, allModels) => {
     app.get('/recipes/:id', recipeController.getRecipeById);
 
     app.get('/recipes/:id/edit', recipeController.editForm);
-    app.put('/recipes/:id/', recipeController.updateRecipe);
+    app.put('/recipes/:id', recipeController.updateRecipe);
+
+    app.get('/recipes/:id/delete', recipeController.deleteForm);
+    app.delete('/recipes/:id', recipeController.deleteRecipe);
 
     // app.get('/testwin', recipeController.test);
 

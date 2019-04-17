@@ -7,9 +7,9 @@ module.exports = (dbPoolInstance) => {
 
   // `dbPoolInstance` is accessible within this function scope
 
-  let getAll = callback => {
+  let getAll = (callback) => {
 
-    const queryString = 'SELECT * FROM recipes';
+    const queryString = 'SELECT * FROM recipes ORDER BY id ASC';
 
     dbPoolInstance.query(queryString, (error, result) => {
 
@@ -53,22 +53,33 @@ module.exports = (dbPoolInstance) => {
     })
   };
 
-  let testOne = (request, callback) => {
+  let deleteOne = (request, callback) => {
 
-    const queryString = 'INSERT INTO test (instructions) VALUES ($1) RETURNING *';
+    const queryString = 'DELETE FROM recipes WHERE id=' + request.params.id + 'RETURNING *';
 
-    const values = [{1:"eat cheese",2:"shart"}] ;
-
-    dbPoolInstance.query(queryString, values, (error, result) => {
+    dbPoolInstance.query(queryString, (error, result) => {
         error ? callback(error, null) : callback (null, result.rows);
     })
   };
+
+
+  // let testOne = (request, callback) => {
+
+  //   const queryString = 'INSERT INTO test (instructions) VALUES ($1) RETURNING *';
+
+  //   const values = [{1:"eat cheese",2:"shart"}] ;
+
+  //   dbPoolInstance.query(queryString, values, (error, result) => {
+  //       error ? callback(error, null) : callback (null, result.rows);
+  //   })
+  // };
 
   return {
     getAll,
     getOne,
     createOne,
     updateOne,
-    testOne,
+    deleteOne,
+    // testOne,
+    };
   };
-};
