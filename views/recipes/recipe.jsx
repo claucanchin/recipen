@@ -15,6 +15,10 @@ class Recipe extends React.Component {
                     <p><img src={recipe.image} alt="recipe image"/></p>
                     <p>Preparation time: {recipe.prep_time} minutes</p>
                     <p>Cooking time: {recipe.cook_time} minutes</p>
+                    <p>Ingredients:</p>
+                    <p>{recipe.ingredients}</p>
+                    <p>Instructions:</p>
+                    <p>{recipe.instructions}</p>
                     <p>Posted by {recipe.contributor}</p>
                 </div>
             </Layout>

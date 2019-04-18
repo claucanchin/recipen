@@ -11,18 +11,18 @@ class Delete extends React.Component {
         <Layout>
             <h3>Delete recipe?</h3>
                 <form method="POST" action={deleteAction}>
-                    Name: <br/>
-                        <p>{recipe.name}</p>
-                    Description: <br/>
-                        <p>{recipe.description}</p>
-                    Image: <br/>
-                        <img src={recipe.image} alt="recipe image"/><br/>
-                    Preparation Time (minutes): <br/>
-                        <p>{recipe.prep_time}</p>
-                    Cooking Time (minutes): <br/>
-                        <p>{recipe.cook_time}</p>
-                    Contributor: <br/>
-                        <p>{recipe.contributor}</p>
+                <div>
+                    <p>{recipe.name}</p>
+                    <p>{recipe.description}</p>
+                    <p><img src={recipe.image} alt="recipe image"/></p>
+                    <p>Preparation time: {recipe.prep_time} minutes</p>
+                    <p>Cooking time: {recipe.cook_time} minutes</p>
+                    <p>Ingredients:</p>
+                    <p>{recipe.ingredients}</p>
+                    <p>Instructions:</p>
+                    <p>{recipe.instructions}</p>
+                    <p>Posted by {recipe.contributor}</p>
+                </div>
                     <input type="submit" value="Delete"/>
                 </form>
         </Layout>

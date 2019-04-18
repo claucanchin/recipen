@@ -28,6 +28,5 @@ module.exports = (app, allModels) => {
     app.get('/recipes/:id/delete', recipeController.deleteForm);
     app.delete('/recipes/:id', recipeController.deleteRecipe);
 
-    // app.get('/testwin', recipeController.test);
 
 };

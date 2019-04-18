@@ -1,9 +1,9 @@
 DROP TABLE users;
 DROP TABLE recipes;
-DROP TABLE ingredients;
-DROP TABLE recipes_ingredients;
+-- DROP TABLE ingredients;
+-- DROP TABLE recipes_ingredients;
 -- DROP TABLE instructions;
-DROP TABLE categories;
+-- DROP TABLE categories;
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -21,23 +21,24 @@ CREATE TABLE IF NOT EXISTS recipes (
     contributor TEXT,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
-    instructions JSONB
+    instructions TEXT,
+    ingredients TEXT
 );
 
-CREATE TABLE IF NOT EXISTS ingredients (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    food_group TEXT,
-    calories INTEGER
-);
+-- CREATE TABLE IF NOT EXISTS ingredients (
+--     id SERIAL PRIMARY KEY,
+--     name TEXT,
+--     food_group TEXT,
+--     calories INTEGER
+-- );
 
-CREATE TABLE IF NOT EXISTS recipes_ingredients (
-    id SERIAL PRIMARY KEY,
-    recipes_id INTEGER,
-    ingredients_id INTEGER,
-    amount TEXT,
-    unit TEXT
-);
+-- CREATE TABLE IF NOT EXISTS recipes_ingredients (
+--     id SERIAL PRIMARY KEY,
+--     recipes_id INTEGER,
+--     ingredients_id INTEGER,
+--     amount TEXT,
+--     unit TEXT
+-- );
 
 -- CREATE TABLE IF NOT EXISTS instructions (
 --     id SERIAL PRIMARY KEY,
@@ -46,13 +47,8 @@ CREATE TABLE IF NOT EXISTS recipes_ingredients (
 --     recipes_id INTEGER
 -- );
 
-CREATE TABLE IF NOT EXISTS categories (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    recipes_id INTEGER
-);
-
--- CREATE TABLE IF NOT EXISTS test (
+-- CREATE TABLE IF NOT EXISTS categories (
 --     id SERIAL PRIMARY KEY,
---     instructions JSONB
+--     name TEXT,
+--     recipes_id INTEGER
 -- );
