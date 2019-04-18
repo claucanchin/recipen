@@ -33,9 +33,11 @@ module.exports = (dbPoolInstance) => {
 
   let createOne = (request, callback) => {
 
-    const queryString = 'INSERT INTO recipes (name, description, image, prep_time, cook_time, contributor) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+    // console.log(request.body)
 
-    const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, request.body.contributor];
+    const queryString = 'INSERT INTO recipes (name, description, image, prep_time, cook_time, ingredients, instructions, contributor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+
+    const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, request.body.ingredients, request.body.instructions, request.body.contributor];
 
     dbPoolInstance.query(queryString, values, (error, result) => {
         error ? callback(error, null) : callback (null, result.rows);
@@ -44,9 +46,9 @@ module.exports = (dbPoolInstance) => {
 
   let updateOne = (request, callback) => {
 
-    const queryString = "UPDATE recipes SET name=$1, description=$2, image=$3, prep_time=$4, cook_time=$5 WHERE id=" + request.params.id + 'RETURNING *';
+    const queryString = "UPDATE recipes SET name=$1, description=$2, image=$3, prep_time=$4, cook_time=$5, ingredients=$6, instructions=$7 WHERE id=" + request.params.id + ' RETURNING *';
 
-    const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time];
+    const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, request.body.ingredients, request.body.instructions];
 
     dbPoolInstance.query(queryString, values, (error, result) => {
         error ? callback(error, null) : callback (null, result.rows);

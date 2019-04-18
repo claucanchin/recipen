@@ -92,3 +92,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#this thing is to counter the error:
+#Warning: Invalid DOM property `class`. Did you mean `className`?
+.babelrc

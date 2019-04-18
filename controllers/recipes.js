@@ -30,7 +30,7 @@ module.exports = (db) => {
 
     let updateRecipe = (request, response) => {
         db.recipes.updateOne(request, (error, recipe) => {
-            response.redirect(`recipes/${recipe[0].id}`);
+            response.redirect(`/recipes/${recipe[0].id}`);
         })
     };
 
