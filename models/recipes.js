@@ -33,7 +33,7 @@ module.exports = (dbPoolInstance) => {
 
   let createOne = (request, callback) => {
 
-    // console.log(request.body)
+    console.log(request.body)
 
     const queryString = 'INSERT INTO recipes (name, description, image, prep_time, cook_time, ingredients, instructions, contributor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
 

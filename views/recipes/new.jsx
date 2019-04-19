@@ -35,16 +35,20 @@ class New extends React.Component {
                     </div>
 
                     <div>Ingredients:</div>
-                        <div id="ingredients-form">
+                        <div id="ingredient-form">
                             <div>
-                                <input class="ingredient-field" name="ingredient-1" value="1 apple"/></div>
+                                <input class="ingredient-field" name="ingredient-1" value="1 apple"/>
                             </div>
+                        </div>
                         <button type="button" id="add-ingredient">Add Ingredient</button>
 
                     <div>Instructions:</div>
-                    <div>
-                        <textarea name="instructions" cols="40" rows="2" value="1. Walk away from the apple."></textarea>
+                    <div id="instruction-form">
+                        <div>
+                            <textarea class="instruction-field" name="instruction-1" cols="40" rows="2" value="1. Leave apple."></textarea>
+                        </div>
                     </div>
+                    <button type="button" id="add-instruction">Add Instruction</button>
 
                     <div>Contributor:</div>
                     <div>
