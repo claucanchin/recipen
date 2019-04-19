@@ -1,3 +1,5 @@
+const sha256 = require('js-sha256');
+
 module.exports = (db) => {
 
     let allRecipes = (request, response) => {
@@ -22,7 +24,23 @@ module.exports = (db) => {
         })
     };
 
+    let isLoggedIn = function(request) {
+
+        if (request.cookies === undefined) {
+            return false;
+        }
+
+        const SALT = "not all lobsters are angry";
+        let loggedInHash = sha256(request.cookies['username'] + SALT);
+
+        return request.cookies['logged_in'] === loggedInHash;
+    }
+
     let editForm = (request, response) => {
+
+        if (!isLoggedIn(request)) {
+            return response.redirect('/login');
+        }
         db.recipes.getOne(request, (error, recipe) => {
             response.render('recipes/edit', { recipe });
         })

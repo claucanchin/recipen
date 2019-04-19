@@ -34,12 +34,13 @@ module.exports = (db) => {
                     } else {
                         visits = parseInt(visits) + 1;
                     }
-                    response.cookie('loggedin', true);
                     response.cookie('visits', visits);
 
                     const SALT = "not all lobsters are angry";
-                    let currentSessionCookie = sha256 ()
-                    response.cookie()
+                    let currentSessionCookie = sha256 (users[0].username + SALT);
+
+                    response.cookie('username', users[0].username);
+                    response.cookie('logged_in', currentSessionCookie);
 
                     response.send('You are logged in!</br><a href="/recipes">Click here to start browsing recipes.</a>');
 
