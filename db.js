@@ -35,7 +35,7 @@ if( process.env.DATABASE_URL ){
   configs = {
     user: 'claucanchin',
     host: '127.0.0.1',
-    database: 'recipen_db',
+    database: 'recipe_db',
     port: 5432
   };
 }
