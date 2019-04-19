@@ -5,6 +5,7 @@ class Recipe extends React.Component {
     render() {
 
         const recipe = this.props.recipe[0];
+        console.log(recipe);
 
         return (
             <Layout>

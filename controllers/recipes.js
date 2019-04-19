@@ -46,14 +46,6 @@ module.exports = (db) => {
         })
     };
 
-
-    // let test = (request, response) => {
-    //     db.recipes.testOne(request, (error, recipe) => {
-    //         console.log(recipe);
-    //         response.send('successsssss', recipe);
-    //     })
-    // };
-
     return {
         allRecipes: allRecipes,
         getRecipeById: getRecipeById,
@@ -63,7 +55,6 @@ module.exports = (db) => {
         updateRecipe: updateRecipe,
         deleteForm: deleteForm,
         deleteRecipe: deleteRecipe,
-        // test: test,
     };
 
 };

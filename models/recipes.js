@@ -87,17 +87,6 @@ module.exports = (dbPoolInstance) => {
     };
 
 
-    // let testOne = (request, callback) => {
-
-    //   const queryString = 'INSERT INTO test (instructions) VALUES ($1) RETURNING *';
-
-    //   const values = [{1:"eat cheese",2:"shart"}] ;
-
-    //   dbPoolInstance.query(queryString, values, (error, result) => {
-    //       error ? callback(error, null) : callback (null, result.rows);
-    //   })
-    // };
-
     return {
         getAll,
         getOne,

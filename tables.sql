@@ -7,8 +7,8 @@ DROP TABLE recipes;
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    username TEXT,
-    password TEXT
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS recipes (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     cook_time INTEGER,
     contributor TEXT,
     created_at TIMESTAMP,
-    updated_at TIMESTAMP,
+    updated_at TIMESTAMP default current_timestamp,
     instructions JSONB,
     ingredients JSONB
 );

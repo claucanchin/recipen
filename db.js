@@ -61,11 +61,10 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
-// const userModelsFunction = require('./models/users');
-// const userModelsObject = userModelsFunction(pool);
+const userModelsFunction = require('./models/users');
+const userModelsObject = userModelsFunction(pool);
 
 const recipeModelsFunction = require('./models/recipes');
-
 const recipeModelsObject = recipeModelsFunction(pool);
 
 
@@ -95,5 +94,6 @@ module.exports = {
   /*
    * ADD APP MODELS HERE
    */
-  recipes: recipeModelsObject
+  recipes: recipeModelsObject,
+  users: userModelsObject,
 };

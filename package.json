@@ -4,6 +4,7 @@
   "description": "CONCEPT DESIGN",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "express-react-views": "^0.11.0",

@@ -14,7 +14,7 @@ module.exports = (app, allModels) => {
   // require the controller
 
     const recipeController = require('./controllers/recipes')(allModels);
-    // const userController = require('./controllers/users')(allModels);
+    const userController = require('./controllers/users')(allModels);
 
 //recipes
 
@@ -30,8 +30,12 @@ module.exports = (app, allModels) => {
         app.get('/recipes/:id/delete', recipeController.deleteForm);
         app.delete('/recipes/:id', recipeController.deleteRecipe);
 
-//users
+// users
 
-        // app.get('/users/register', userController.registerForm);
+        app.get('/register', userController.registerForm);
+        app.post('/register', userController.registered);
+
+        app.get('/login', userController.loginForm);
+        app.post('/login', userController.loggedIn);
 
 };
