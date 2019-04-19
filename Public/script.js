@@ -2,6 +2,7 @@ window.onload = () => {
 
     const addIngredientButton = document.getElementById("add-ingredient");
     const addInstructionButton = document.getElementById("add-instruction");
+    const ingredientsEl = document.getElementById('ingredient-json');
 
     if (addIngredientButton) {
 
@@ -47,5 +48,20 @@ window.onload = () => {
         });
 
     };
+    if (ingredientsEl) {
+        let ingredientsString = ingredientsEl.dataset.ingredients;
+        let ingredientsObj = JSON.parse(ingredientsString);
+        let ingredientCount = 0;
+        const ingredientForm = document.getElementById("ingredient-form");
+        ingredientsObj.items.forEach((ig) => {
+            let newDiv = document.createElement("div");
+            let newInput = document.createElement("input");
+            newInput.value = ig;
+            newInput.className = "ingredient-field";
+            newInput.name = `ingredient-${ingredientCount+1}`;
+            ingredientForm.appendChild(newDiv);
+            newDiv.appendChild(newInput);
+        })
+    }
 
 }

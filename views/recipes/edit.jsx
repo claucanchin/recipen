@@ -6,6 +6,7 @@ class Edit extends React.Component {
 
     const recipe = this.props.recipe[0];
     const putAction = `/recipes/${this.props.recipe[0].id}?_method=PUT`;
+    const ingredientsJSON = JSON.stringify(recipe.ingredients);
 
     return (
         <Layout>
@@ -21,12 +22,15 @@ class Edit extends React.Component {
                         <input name="prep_time" type="integer" value={recipe.prep_time}/><br/>
                     Cooking Time (minutes):
                         <input name="cook_time" type="integer" value={recipe.cook_time}/><br/>
-                    Ingredients: <br/>
-                        <textarea name="ingredients" cols="40" rows="8" value={recipe.ingredients}></textarea><br/>
+                        <div>Ingredients:</div>
+                    <div id="ingredient-form">
+                        </div>
+                        <button type="button" id="add-ingredient">Add Ingredient</button>
                     Instructions: <br/>
                         <textarea name="instructions" cols="40" rows="8" value={recipe.instructions}></textarea><br/>
                     Posted by {recipe.contributor}<br/>
                     <input type="submit" value="Edit Recipe"/>
+                    <div id='ingredient-json' data-ingredients={ingredientsJSON}></div>
                 </form>
         </Layout>
     );
