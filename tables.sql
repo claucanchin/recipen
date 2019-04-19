@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS recipes (
     contributor TEXT,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
-    instructions TEXT [],
-    ingredients TEXT []
+    instructions JSONB,
+    ingredients JSONB
 );
 
 -- CREATE TABLE IF NOT EXISTS ingredients (

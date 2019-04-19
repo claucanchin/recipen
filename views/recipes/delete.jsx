@@ -18,9 +18,13 @@ class Delete extends React.Component {
                     <p>Preparation time: {recipe.prep_time} minutes</p>
                     <p>Cooking time: {recipe.cook_time} minutes</p>
                     <p>Ingredients:</p>
-                    <p>{recipe.ingredients}</p>
+                    { recipe.ingredients.items.map(item =>
+                        <p>{item}</p>
+                    )}
                     <p>Instructions:</p>
-                    <p>{recipe.instructions}</p>
+                    { recipe.instructions.steps.map(step =>
+                        <p>{step}</p>
+                    )}
                     <p>Posted by {recipe.contributor}</p>
                 </div>
                     <input type="submit" value="Delete"/>
