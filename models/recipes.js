@@ -18,7 +18,6 @@ module.exports = (dbPoolInstance) => {
             } else {
                 callback(null, result.rows)
             }
-
         });
     };
 
@@ -68,9 +67,32 @@ module.exports = (dbPoolInstance) => {
 
     let updateOne = (request, callback) => {
 
+        let ingredients = [];
+        let instructions = [];
+
+        let ingredientCount = 1;
+        while (true) {
+            let curr = request.body['ingredient-' + ingredientCount];
+            if (!curr) {
+                break;
+            }
+            ingredientCount++;
+            ingredients.push(curr);
+        }
+
+        let instructionCount = 1;
+        while (true) {
+            let curr = request.body['instruction-' + instructionCount];
+            if (!curr) {
+                break;
+            }
+            instructionCount++;
+            instructions.push(curr);
+        }
+
         const queryString = "UPDATE recipes SET name=$1, description=$2, image=$3, prep_time=$4, cook_time=$5, ingredients=$6, instructions=$7 WHERE id=" + request.params.id + ' RETURNING *';
 
-        const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, request.body.ingredients, request.body.instructions];
+        const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }];
 
         dbPoolInstance.query(queryString, values, (error, result) => {
             error ? callback(error, null) : callback(null, result.rows);
@@ -93,6 +115,5 @@ module.exports = (dbPoolInstance) => {
         createOne,
         updateOne,
         deleteOne,
-        // testOne,
     };
 };
