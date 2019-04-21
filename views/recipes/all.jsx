@@ -7,32 +7,30 @@ class All extends React.Component {
 
         const themRecipes = this.props.allRecipes.map((recipe) => {
             return (
-                <div>
-                    <p>{recipe.name}</p>
-                    <p>{recipe.description}</p>
-                    <p><img src={recipe.image} alt="recipe image"/></p>
-                    <p>Preparation time: {recipe.prep_time} minutes</p>
-                    <p>Cooking time: {recipe.cook_time} minutes</p>
-                    <p>Ingredients:</p>
-                    { recipe.ingredients.items.map(item =>
-                        <p>{item}</p>
-                    )}
-                    <p>Instructions:</p>
-                    { recipe.instructions.steps.map(step =>
-                        <p>{step}</p>
-                    )}
-                    <p>Posted by {recipe.contributor}</p>
-                    <p>------------------------------</p>
+            <div class = "col-12 col-sm-6 col-md-4 col-lg-3 my-3">
+                <div class ="card text-left">
+                    <img src={recipe.image} class="card-img-top" alt="recipe image"/>
+                    <div class="card-body">
+                        <h5>{recipe.name}</h5>
+                        <p>{recipe.description}</p>
+                    </div>
+                        <div class="card-footer">
+                            <small class="text-muted">By {recipe.contributor}</small>
+                        </div>
                 </div>
+            </div>
             );
         });
 
         return (
             <Layout>
                 <h1>All Recipes</h1>
-                <div>
-                    {themRecipes}
-                </div>
+                    <div class = "container">
+                        <div class = "row">
+                            {themRecipes}
+                        </div>
+                    </div>
+
             </Layout>
         );
     }
