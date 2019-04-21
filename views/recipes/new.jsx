@@ -50,10 +50,6 @@ class New extends React.Component {
                         </div>
                     <button type="button" id="add-instruction">Add Instruction</button>
 
-                    <div>Contributor:</div>
-                        <div>
-                            <input name="contributor" type="text" value="food_lady"/>
-                        </div>
                     <div>
                         <input type="submit" value="Add New Recipe"/>
                     </div>

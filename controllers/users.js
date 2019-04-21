@@ -10,7 +10,7 @@ module.exports = (db) => {
     let registered = (request, response) => {
         db.users.createOne(request, (error, users) => {
             if (error) {
-                response.send("Got error. Aiyo");
+                response.send("Error Registering");
             } else {
                 response.send('Account created!</br><a href="/login">Click here to login</a>');
             }

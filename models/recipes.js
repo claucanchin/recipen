@@ -55,10 +55,10 @@ module.exports = (dbPoolInstance) => {
             instructions.push(curr);
         }
 
+        const currUser = request.cookies.username;
         const queryString = 'INSERT INTO recipes (name, description, image, prep_time, cook_time, ingredients, instructions, contributor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
 
-        const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }, request.body.contributor];
-
+        const values = [request.body.name, request.body.description, request.body.image, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }, currUser];
 
         dbPoolInstance.query(queryString, values, (error, result) => {
             error ? callback(error, null) : callback(null, result.rows);

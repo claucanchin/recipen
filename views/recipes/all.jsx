@@ -3,7 +3,7 @@ var Layout = require("../layout");
 
 class All extends React.Component {
     render() {
-        console.log(this.props.allRecipes);
+        // console.log(this.props.allRecipes);
 
         const themRecipes = this.props.allRecipes.map((recipe) => {
             return (
