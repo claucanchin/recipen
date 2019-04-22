@@ -4,6 +4,8 @@ window.onload = () => {
     const addInstructionButton = document.getElementById("add-instruction");
     const ingredientsEl = document.getElementById('ingredient-json');
     const instructionsEl = document.getElementById('instruction-json');
+    // const loginButton = document.getElementById("login-button");
+    // const logoutButton = document.getElementById("logout-button");
 
     if (addIngredientButton) {
 
@@ -83,5 +85,13 @@ window.onload = () => {
             instructionCount++;
         });
     };
+
+//temporary
+    // if (document.cookie) {
+    //     loginButton.remove();
+    // } else {
+    //     logoutButton.remove();
+    // }
+
 
 }

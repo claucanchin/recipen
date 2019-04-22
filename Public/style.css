@@ -1,10 +1,11 @@
 body {
-  background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.5)), url(/brooke-lark-230140-unsplash.jpg);
+  background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), url(/brooke-lark-230140-unsplash.jpg);
   background-color: #FFFFFF;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  text-align: center;
 }
 
 .card-columns {
@@ -28,4 +29,14 @@ display: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 30px;
+}
+
+p, div {
+	font-family: 'Josefin Slab', serif;
+  font-size: 20px;
 }

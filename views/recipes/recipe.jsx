@@ -5,26 +5,28 @@ class Recipe extends React.Component {
     render() {
 
         const recipe = this.props.recipe[0];
+        const editUrl = "/recipes/" + recipe.id + "/edit";
         console.log(recipe);
 
         return (
             <Layout>
-                <div class = "container my-5">
-                    <div class = "row my-3">
+                <h3>{recipe.name}</h3>
+                <p>By {recipe.contributor}</p>
+                <div class = "container">
+                    <div class = "row">
                         <div class = "col">
-                            <h3>{recipe.name}</h3>
-                            <p>{recipe.description}</p>
-                        </div>
-                        <div class = "col">
-                            <p><img src={recipe.image} class="img-fluid" alt="recipe image"/></p>
-                        </div>
-                    </div>
-                    <div class = "row my-3">
-                        <div class = "col text-left">
                             <h5>Ingredients:</h5>
                                 { recipe.ingredients.items.map(item =>
                                     <div>{item}</div>
                                 )}
+                        </div>
+                        <div class = "col">
+                            <div style={{'text-align':'right'}}><img src={recipe.image} class="img-fluid" alt="recipe image"/></div>
+                        </div>
+                    </div>
+                    <div class = "row my-3">
+                        <div class = "col">
+                            <p>{recipe.description}</p>
                         </div>
                     </div>
                     <div class = "row my-3">
@@ -47,7 +49,9 @@ class Recipe extends React.Component {
                     </div>
                     <div class = "row my-3">
                         <div class = "col">
-                            <p>Posted by {recipe.contributor}</p>
+                            <form action={editUrl}>
+                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit">Edit Recipe</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -10,12 +10,12 @@ class New extends React.Component {
                 <form id="new-recipe-form" method="POST" enctype="multipart/form-data" action="/recipes">
                     <div>Name:</div>
                         <div>
-                            <textarea name="name" cols="40" rows="1" value="Lonely Red Apple"></textarea>
+                            <textarea name="name" cols="40" rows="1" placeholder="Pecan Pie"></textarea>
                         </div>
 
                     <div>Description:</div>
                         <div>
-                            <textarea name="description" cols="40" rows="8" value="The only recipe you need to make your apple lonely."></textarea>
+                            <textarea name="description" cols="40" rows="8" placeholder="The only recipe you need to make the perfect pecan pie."></textarea>
                         </div>
 
                     <div>Image:</div>
@@ -25,32 +25,32 @@ class New extends React.Component {
 
                     <div>Preparation Time (minutes):</div>
                         <div>
-                            <input name="prep_time" type="integer" value="2"/>
+                            <input name="prep_time" type="integer" placeholder="10"/>
                         </div>
 
                     <div>Cooking Time (minutes):</div>
                         <div>
-                            <input name="cook_time" type="integer" value="4"/>
+                            <input name="cook_time" type="integer" placeholder="3"/>
                         </div>
 
                     <div>Ingredients:</div>
                         <div id="ingredient-form">
                             <div>
-                                <input class="ingredient-field" name="ingredient-1" value="1 apple"/>
+                                <input class="ingredient-field" name="ingredient-1" placeholder="Cup of pecan"/>
                             </div>
                         </div>
-                    <button type="button" id="add-ingredient">Add Ingredient</button>
+                    <button type="button" id="add-ingredient" class="btn btn-outline-secondary btn-sm">Add Ingredient</button>
 
                     <div>Instructions:</div>
                         <div id="instruction-form">
                             <div>
-                                <textarea class="instruction-field" name="instruction-1" cols="40" rows="2" value="1. Leave apple."></textarea>
+                                <textarea class="instruction-field" name="instruction-1" cols="40" rows="2" placeholder="1. Blend pecan"></textarea>
                             </div>
                         </div>
-                    <button type="button" id="add-instruction">Add Instruction</button>
+                    <button type="button" id="add-instruction" class="btn btn-outline-secondary btn-sm">Add Instruction</button>
 
                     <div>
-                        <input type="submit" value="Add New Recipe"/>
+                        <button class="btn btn btn-dark my-2 my-sm-4" type="submit">Add New Recipe</button>
                     </div>
                 </form>
         </Layout>

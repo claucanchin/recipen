@@ -4,11 +4,13 @@ class Layout extends React.Component {
     render(){
 
         const loginUrl = "/login";
+        const logoutUrl = "/recipes";
 
         return (
         <html>
             <head>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+                <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet"></link>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
                 <link rel="stylesheet" href="/style.css"></link>
                 <title>{this.props.title}</title>
@@ -37,13 +39,18 @@ class Layout extends React.Component {
                             </div>
                         </div>
                         <div class="nav-item navbar-nav">
-                            <a class="nav-link" href="#">Videos</a>
-                        </div>
-                        <div class="nav-item navbar-nav">
                             <a class="nav-link" href="#">Articles</a>
                         </div>
-                    </div>
                         <div class="nav-item navbar-nav">
+                            <a class="nav-link" href="/recipes/new">Add New</a>
+                        </div>
+                    </div>
+                        <div class="nav-item navbar-nav" id="login-button">
+                            <form action={logoutUrl}>
+                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{visibility: 'hidden'}}>Logout</button>
+                            </form>
+                        </div>
+                        <div class="nav-item navbar-nav" id="logout-button">
                             <form action={loginUrl}>
                                 <button class="btn btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
                             </form>

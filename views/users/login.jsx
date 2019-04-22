@@ -12,13 +12,12 @@ class Login extends React.Component {
 
             <body>
 
-
                 <div class= "login-container">
                         <img src="/logo.png" width="190" height="81" alt="recipen-logo"/>
                         <h4>Login</h4>
                         <p>Welcome back.</p>
                     <div>
-                        <a href = "https://www.facebook.com/"><img src="fb-button.png" style={{width:'210px', margin:'10px 0'}} alt="google button"/></a>
+                        <a href = "https://www.facebook.com/"><img src="fb-button.png" style={{width:'210px', margin:'10px 0'}} alt="fb button"/></a>
                         <p>or</p>
 
                         <form method="POST" action="/login">
@@ -33,7 +32,7 @@ class Login extends React.Component {
                 </div>
             </body>
         </html>
-            );
+        );
     }
 }
 

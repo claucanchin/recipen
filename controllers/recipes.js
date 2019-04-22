@@ -39,7 +39,7 @@ module.exports = (db) => {
             return response.redirect('/login');
         }
         db.recipes.createOne(request, (error, recipe) => {
-            console.log(recipe);
+            // console.log(recipe);
             response.redirect(`recipes/${recipe[0].id}`);
         })
     };

@@ -42,7 +42,7 @@ module.exports = (db) => {
                     response.cookie('username', users[0].username);
                     response.cookie('logged_in', currentSessionCookie);
 
-                    response.send('You are logged in!</br><a href="/recipes">Click here to start browsing recipes.</a>');
+                    response.redirect('/recipes');
 
                 } else {
                     console.log("Password is incorrect.");

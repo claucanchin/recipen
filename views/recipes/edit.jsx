@@ -13,7 +13,7 @@ class Edit extends React.Component {
 
     return (
         <Layout>
-            <h3>Edit Recipe</h3>
+            <h3>Edit / Delete Recipe</h3>
                 <form method="POST" action={putAction} enctype="multipart/form-data">
                     <div>Name:</div>
                         <div>
@@ -25,29 +25,51 @@ class Edit extends React.Component {
                         </div>
                     <div>Image:</div>
                         <div>
-                            <img src={recipe.image} style={{width:"50px"}}/>
-                            <input type="file" name="image" value="fried fish"/>
+                            <img src={recipe.image} style={{width:'180px', 'padding-left':'100px', 'padding-left':'50px'}}/>
+                            <input type="file" name="image" style={{'padding-left':'50px'}}/>
                         </div>
+
+
+                    <div class="container" style={{display: 'flex', 'justify-content':'center', 'align-items':'center', padding:'10px'}}>
+                    <div class="row">
+                    <div class="col">
                     <div>Preparation Time (minutes):</div>
-                        <div>
-                            <input name="prep_time" type="integer" value={recipe.prep_time}/>
-                        </div>
-                    <div>Cooking Time (minutes):</div>
-                        <div>
-                            <input name="cook_time" type="integer" value={recipe.cook_time}/>
-                        </div>
+                        <div><input name="prep_time" type="integer" value={recipe.prep_time}/></div>
+                    </div>
+                    <div class="col">
+                    <div>Cooking Time <div>(minutes):</div></div>
+                        <div><input name="cook_time" type="integer" value={recipe.cook_time}/></div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="container" style={{display: 'flex', 'justify-content':'center', 'align-items':'center', padding:'10px'}}>
+                    <div class="row">
+                    <div class="col">
                     <div>Ingredients:</div>
                         <div id="ingredient-form"></div>
+                    </div>
+                    <div class="col">
                     <div>Instructions:</div>
                         <div id="instruction-form"></div>
-                    Posted by {recipe.contributor}<br/>
-                    <input type="submit" value="Edit Recipe"/>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div>Posted by {recipe.contributor}</div>
+
+                    <span>
+                    <button class="btn btn btn-outline-dark my-2 my-sm-2" type="submit">Edit Recipe</button>
                     <div id='ingredient-json' data-ingredients={ingredientsJSON}></div>
                     <div id='instruction-json' data-instructions={instructionsJSON}></div>
+                    </span>
                 </form>
+                <span>
                 <form action={deleteUrl}>
-                    <input type="submit" value="Delete Recipe" />
+                    <button class="btn btn btn-outline-danger my-2 my-sm-2" type="submit">Delete Recipe</button>
+
                 </form>
+                </span>
         </Layout>
     );
   }
