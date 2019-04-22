@@ -1,3 +1,16 @@
+const multer  = require('multer');
+
+const storage = multer.diskStorage({
+   destination: function (req, file, cb) {
+       cb(null, 'public/images')
+   },
+   filename: function (req, file, cb) {
+       cb(null, file.originalname)
+   }
+});
+
+const upload = multer({ storage: storage })
+
 module.exports = (app, allModels) => {
 
   /*
@@ -19,13 +32,13 @@ module.exports = (app, allModels) => {
 //recipes
 
         app.get('/recipes/new', recipeController.recipeForm);
-        app.post('/recipes', recipeController.createRecipe);
+        app.post('/recipes',upload.single('image'), recipeController.createRecipe);
 
         app.get('/recipes', recipeController.allRecipes);
         app.get('/recipes/:id', recipeController.getRecipeById);
 
         app.get('/recipes/:id/edit', recipeController.editForm);
-        app.put('/recipes/:id', recipeController.updateRecipe);
+        app.put('/recipes/:id', upload.single('image'), recipeController.updateRecipe);
 
         app.get('/recipes/:id/delete', recipeController.deleteForm);
         app.delete('/recipes/:id', recipeController.deleteRecipe);

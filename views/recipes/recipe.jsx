@@ -16,7 +16,7 @@ class Recipe extends React.Component {
                             <p>{recipe.description}</p>
                         </div>
                         <div class = "col">
-                            <p><img src={recipe.image} alt="recipe image"/></p>
+                            <p><img src={recipe.image} class="img-fluid" alt="recipe image"/></p>
                         </div>
                     </div>
                     <div class = "row my-3">

@@ -35,7 +35,6 @@ module.exports = (db) => {
     };
 
     let createRecipe = (request, response) => {
-
         if (!isLoggedIn(request)) {
             return response.redirect('/login');
         }

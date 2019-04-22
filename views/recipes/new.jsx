@@ -7,8 +7,7 @@ class New extends React.Component {
     return (
         <Layout>
             <h3>Add new recipe</h3>
-                <form id="new-recipe-form" method="POST" action="/recipes">
-
+                <form id="new-recipe-form" method="POST" enctype="multipart/form-data" action="/recipes">
                     <div>Name:</div>
                         <div>
                             <textarea name="name" cols="40" rows="1" value="Lonely Red Apple"></textarea>
@@ -19,9 +18,9 @@ class New extends React.Component {
                             <textarea name="description" cols="40" rows="8" value="The only recipe you need to make your apple lonely."></textarea>
                         </div>
 
-                    <div>Image URL:</div>
+                    <div>Image:</div>
                         <div>
-                            <textarea name="image" cols="40" rows="2" value="https://cdn2.stylecraze.com/wp-content/uploads/2015/08/1508_10-Strange-Side-Effects-Of-Consuming-Apple.jpg"></textarea>
+                            <input type="file" name="image" />
                         </div>
 
                     <div>Preparation Time (minutes):</div>
