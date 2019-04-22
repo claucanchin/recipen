@@ -8,7 +8,8 @@ class Edit extends React.Component {
     const putAction = `/recipes/${this.props.recipe[0].id}?_method=PUT`;
     const ingredientsJSON = JSON.stringify(recipe.ingredients);
     const instructionsJSON = JSON.stringify(recipe.instructions);
-    // console.log(recipe);
+    const deleteUrl = "/recipes/" + recipe.id + "/delete";
+
 
     return (
         <Layout>
@@ -43,6 +44,9 @@ class Edit extends React.Component {
                     <input type="submit" value="Edit Recipe"/>
                     <div id='ingredient-json' data-ingredients={ingredientsJSON}></div>
                     <div id='instruction-json' data-instructions={instructionsJSON}></div>
+                </form>
+                <form action={deleteUrl}>
+                    <input type="submit" value="Delete Recipe" />
                 </form>
         </Layout>
     );

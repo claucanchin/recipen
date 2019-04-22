@@ -20,7 +20,7 @@ class New extends React.Component {
 
                     <div>Image:</div>
                         <div>
-                            <input type="file" name="image" />
+                            <input type="file" name="image" required/>
                         </div>
 
                     <div>Preparation Time (minutes):</div>

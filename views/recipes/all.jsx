@@ -25,7 +25,6 @@ class All extends React.Component {
 
         return (
             <Layout>
-                <h1>RECIPES</h1>
                 <div class="card-columns">
                     {themRecipes}
                 </div>

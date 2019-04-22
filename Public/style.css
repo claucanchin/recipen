@@ -1,16 +1,31 @@
 body {
-	margin: 0 auto;
-	background-color: #f9e9c8;
-	text-align: center;
-	padding: 10px;
+  background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.5)), url(/brooke-lark-230140-unsplash.jpg);
+  background-color: #FFFFFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .card-columns {
-	margin: 0 50px;
+	margin: 20px;
 }
 
 @media (max-width: 40em) {
 .description {
 display: none;
 }
+}
+
+.nav-item {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.login-container {
+	text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
