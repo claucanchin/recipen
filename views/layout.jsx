@@ -19,7 +19,7 @@ class Layout extends React.Component {
             <body>
                 <nav class="navbar navbar-expand-lg navbar-light bg-white">
                   <a class="navbar-brand" href="/recipes">
-                    <img src="/logo.png" width="190" height="81" alt="recipen-logo"/>
+                    <img src="logo.png" width="190" height="81" alt="recipen-logo"/>
                   </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
