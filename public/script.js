@@ -86,11 +86,11 @@ window.onload = () => {
         });
     };
 
-    if (document.cookies) {
+    if (document.cookie) {
         loginButton.style.display = "none";
         logoutButton.style.display = "inline";
     } else {
         loginButton.style.display = "inline";
         logoutButton.style.display = "none";
-    }
+    };
 }
