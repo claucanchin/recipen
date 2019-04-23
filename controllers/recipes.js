@@ -22,7 +22,13 @@ module.exports = (db) => {
 
     let getRecipeById = (request, response) => {
         db.recipes.getOne(request, (error, recipe) => {
-            response.render('recipes/recipe', { recipe });
+
+             let hideEdit = false;
+
+             if (request.cookies.username !== recipe[0].contributor) {
+                hideEdit = true;
+             }
+            response.render('recipes/recipe', { recipe, hideEdit:hideEdit });
         })
     };
 

@@ -45,14 +45,14 @@ class Layout extends React.Component {
                             <a class="nav-link" href="/recipes/new">Add New</a>
                         </div>
                     </div>
-                        <div class="nav-item navbar-nav" id="login-button">
+                        <div class="nav-item navbar-nav" id="logout-button">
                             <form action={logoutRoute}>
-                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{visibility: 'hidden'}}>Logout</button>
+                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{display: 'hidden'}}>Logout</button>
                             </form>
                         </div>
-                        <div class="nav-item navbar-nav" id="logout-button">
+                        <div class="nav-item navbar-nav" id="login-button">
                             <form action={loginRoute}>
-                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
+                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{display: 'hidden'}}>Login</button>
                             </form>
                         </div>
                     <form class="form-inline my-2 my-lg-0">

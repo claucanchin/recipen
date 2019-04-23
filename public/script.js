@@ -4,8 +4,8 @@ window.onload = () => {
     const addInstructionButton = document.getElementById("add-instruction");
     const ingredientsEl = document.getElementById('ingredient-json');
     const instructionsEl = document.getElementById('instruction-json');
-    // const loginButton = document.getElementById("login-button");
-    // const logoutButton = document.getElementById("logout-button");
+    const loginButton = document.getElementById("login-button");
+    const logoutButton = document.getElementById("logout-button");
 
     if (addIngredientButton) {
 
@@ -86,12 +86,11 @@ window.onload = () => {
         });
     };
 
-//temporary
-    // if (document.cookie) {
-    //     loginButton.remove();
-    // } else {
-    //     logoutButton.remove();
-    // }
-
-
+    if (document.cookies) {
+        loginButton.style.display = "none";
+        logoutButton.style.display = "inline";
+    } else {
+        loginButton.style.display = "inline";
+        logoutButton.style.display = "none";
+    }
 }
