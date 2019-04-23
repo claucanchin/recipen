@@ -5,9 +5,8 @@ class Recipe extends React.Component {
     render() {
 
         const recipe = this.props.recipe[0];
-        const editUrl = "/recipes/" + recipe.id + "/edit";
-        // console.log(recipe);
-        console.log(this.props)
+        const editRoute = "/recipes/" + recipe.id + "/edit";
+
         return (
             <Layout>
                 <h3>{recipe.name}</h3>
@@ -50,7 +49,7 @@ class Recipe extends React.Component {
                     <div class = "row my-3">
                         <div class = "col">
 
-                            <form action={editUrl}>
+                            <form action={editRoute}>
                            { !this.props.hideEdit && <button class="btn btn-secondary my-2 my-sm-0" id="btn" type="submit">Edit Recipe</button>}
                             </form>
 
