@@ -34,6 +34,7 @@ module.exports = (app, allModels) => {
         app.get('/recipes/new', recipeController.recipeForm);
         app.post('/recipes',upload.single('image'), recipeController.createRecipe);
 
+        app.get('/', recipeController.allRecipes);
         app.get('/recipes', recipeController.allRecipes);
         app.get('/recipes/:id', recipeController.getRecipeById);
 
