@@ -6,7 +6,12 @@ class Recipe extends React.Component {
 
         const recipe = this.props.recipe[0];
         const editUrl = "/recipes/" + recipe.id + "/edit";
-        console.log(recipe);
+        // console.log(recipe);
+        // const editButton = document.getElementById('btn');
+
+        // if (recipe.contributor !== document.cookie.username) {
+        //     editButton.style.display = "none";
+        // };
 
         return (
             <Layout>
@@ -50,7 +55,7 @@ class Recipe extends React.Component {
                     <div class = "row my-3">
                         <div class = "col">
                             <form action={editUrl}>
-                                <button class="btn btn btn-secondary my-2 my-sm-0" type="submit">Edit Recipe</button>
+                                <button class="btn btn-secondary my-2 my-sm-0" id="btn" type="submit">Edit Recipe</button>
                             </form>
                         </div>
                     </div>

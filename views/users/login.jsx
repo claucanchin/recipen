@@ -24,7 +24,7 @@ class Login extends React.Component {
                             <div style={{'text-align':'left'}}>Username</div>
                             <input name="username" style={{width:'100%', margin:'10px 0'}}/>
                             <div style={{'text-align':'left'}}>Password</div>
-                            <input name="password" style={{width:'100%', margin:'10px 0'}}/>
+                            <input name="password" type="password" style={{width:'100%', margin:'10px 0'}}/>
                             <button type="submit" class="btn btn-dark btn-sm" style={{width:'100%', margin:'10px 0'}}>Login</button>
                         </form>
                         <p>Don't have an account? <a href="/register">Join</a></p>
