@@ -3,8 +3,8 @@ var React = require('react');
 class Layout extends React.Component {
     render(){
 
-        const loginUrl = "/login";
-        const logoutUrl = "/recipes";
+        const loginRoute = "/login";
+        const logoutRoute = "/recipes";
 
         return (
         <html>
@@ -46,12 +46,12 @@ class Layout extends React.Component {
                         </div>
                     </div>
                         <div class="nav-item navbar-nav" id="login-button">
-                            <form action={logoutUrl}>
+                            <form action={logoutRoute}>
                                 <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{visibility: 'hidden'}}>Logout</button>
                             </form>
                         </div>
                         <div class="nav-item navbar-nav" id="logout-button">
-                            <form action={loginUrl}>
+                            <form action={loginRoute}>
                                 <button class="btn btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
                             </form>
                         </div>

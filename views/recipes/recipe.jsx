@@ -7,11 +7,6 @@ class Recipe extends React.Component {
         const recipe = this.props.recipe[0];
         const editUrl = "/recipes/" + recipe.id + "/edit";
         // console.log(recipe);
-        // const editButton = document.getElementById('btn');
-
-        // if (recipe.contributor !== document.cookie.username) {
-        //     editButton.style.display = "none";
-        // };
 
         return (
             <Layout>
