@@ -13,7 +13,7 @@ class Layout extends React.Component {
                 <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab" rel="stylesheet"></link>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
                 <link rel="stylesheet" href="/style.css" type="text/css"></link>
-                <title>{this.props.title}</title>
+                <title>Recipen</title>
             </head>
 
             <body>
