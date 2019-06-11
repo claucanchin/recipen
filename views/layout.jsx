@@ -39,9 +39,6 @@ class Layout extends React.Component {
                             </div>
                         </div>
                         <div class="nav-item navbar-nav">
-                            <a class="nav-link" href="#">Articles</a>
-                        </div>
-                        <div class="nav-item navbar-nav">
                             <a class="nav-link" href="/recipes/new">Add New</a>
                         </div>
                     </div>
@@ -53,10 +50,6 @@ class Layout extends React.Component {
                                 <button class="btn btn btn-secondary my-2 my-sm-0" type="submit" style={{display: 'none'}} id="login-button">Login</button>
                             </form>
                         </div>
-                    <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search Recipes" aria-label="Search"/>
-                      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-                    </form>
                   </div>
                 </nav>
                     {this.props.children}
