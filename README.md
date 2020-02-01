@@ -10,6 +10,7 @@ recipen provides a simple way to enter and save recipes, keeping them organized 
 USER STORIES
 
 MVP:
+
 As a user,
 - I want to be able to add a new recipe
 - I want to be able to search for the recipe
