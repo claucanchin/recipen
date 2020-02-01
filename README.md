@@ -1,11 +1,10 @@
 # recipen
 
-Problem Statement:
-Many experimental cooks enjoy taking existing recipes and making their own changes to them. Often times these modifications are all based on gut feeling, and aren't written down. The results of that are modified recipes that turn out really well but can never be reproduced the exact same way again.
+Problem Statement: Many experimental cooks enjoy taking existing recipes and making their own changes to them. Often times these modifications are all based on gut feeling, and aren't written down. The results of that are modified recipes that turn out really well but can never be reproduced the exact same way again.
 
-Solution:
-recipen provides a simple way to enter and save recipes, keeping them organized and consistent.
+Solution: recipen provides a simple way to enter and save recipes, keeping them organized and consistent.
 
+----
 
 USER STORIES
 
@@ -17,7 +16,7 @@ As a user,
 - I want to be able to edit a recipe
 - I want to be able to delete a recipe
 
-FURTHER:
+Further:
 - Add user log in that ties in with the recipe contributor
 - Add filter and sorting
 - Ability to add recipe as favorite
@@ -27,5 +26,7 @@ FURTHER:
   - Validate that new recipe must at least contain a recipe name
   - Login
 - Save selected recipe as PDF
+
+----
 
 Find recipen [here](https://recipen.herokuapp.com/).
