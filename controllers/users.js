@@ -2,65 +2,58 @@ const bcrypt = require('bcrypt');
 const sha256 = require('js-sha256');
 
 module.exports = (db) => {
+  const registerForm = (request, response) => {
+    response.render('users/register');
+  };
 
-    let registerForm = (request,response) => {
-        response.render('users/register')
-    };
+  const registered = (request, response) => {
+    db.users.createOne(request, (error) => {
+      if (error) {
+        response.send('Error Registering');
+      } else {
+        response.send('Account created!</br><a href="/login">Click here to login</a>');
+      }
+    });
+  };
 
-    let registered = (request, response) => {
-        db.users.createOne(request, (error, users) => {
-            if (error) {
-                response.send("Error Registering");
-            } else {
-                response.send('Account created!</br><a href="/login">Click here to login</a>');
-            }
-        })
-    };
+  const loginForm = (request, response) => {
+    response.render('users/login');
+  };
 
-    let loginForm = (request,response) => {
-        response.render('users/login')
-    };
+  const loggedIn = (request, response) => {
+    db.users.userLogin(request, (error, users) => {
+      if (error) {
+        response.send('Login Error');
+      } else if (users.length === 1) {
+        if (bcrypt.compareSync(request.body.password, users[0].password)) {
+          let { visits } = request.cookies;
+          if (visits === undefined) {
+            visits = 1;
+          } else {
+            visits = parseInt(visits, 10) + 1;
+          }
+          response.cookie('visits', visits);
 
-    let loggedIn = (request,response) => {
-        db.users.userLogin(request, (error, users) => {
-            if (error) {
-                response.send("Login Error");
-            } else if (users.length === 1) {
-                if (bcrypt.compareSync(request.body.password, users[0].password)) {
+          const SALT = 'not all lobsters are angry';
+          const currentSessionCookie = sha256(users[0].username + SALT);
 
-                    var visits = request.cookies['visits'];
-                    if (visits === undefined) {
-                        visits = 1;
-                    } else {
-                        visits = parseInt(visits) + 1;
-                    }
-                    response.cookie('visits', visits);
+          response.cookie('username', users[0].username);
+          response.cookie('logged_in', currentSessionCookie);
 
-                    const SALT = "not all lobsters are angry";
-                    let currentSessionCookie = sha256 (users[0].username + SALT);
+          response.redirect('/recipes');
+        } else {
+          response.send('Incorrect Username or Password.');
+        }
+      } else {
+        response.send('Incorrect Username or Password.');
+      }
+    });
+  };
 
-                    response.cookie('username', users[0].username);
-                    response.cookie('logged_in', currentSessionCookie);
-
-                    response.redirect('/recipes');
-
-                } else {
-                    console.log("Password is incorrect.");
-                    response.send("Incorrect Username or Password.");
-                }
-            } else {
-                console.log("Username is incorrect.");
-                response.send("Incorrect Username or Password.")
-            }
-        })
-    };
-
-
-    return {
-        registerForm: registerForm,
-        registered: registered,
-        loginForm: loginForm,
-        loggedIn: loggedIn,
-    };
-
+  return {
+    registerForm,
+    registered,
+    loginForm,
+    loggedIn,
+  };
 };

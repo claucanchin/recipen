@@ -1,104 +1,96 @@
 const sha256 = require('js-sha256');
 
 module.exports = (db) => {
-
-    let isLoggedIn = function(request) {
-
-        if (request.cookies === undefined) {
-            return false;
-        }
-
-        const SALT = "not all lobsters are angry";
-        let loggedInHash = sha256(request.cookies['username'] + SALT);
-
-        return request.cookies['logged_in'] === loggedInHash;
+  const isLoggedIn = (request) => {
+    if (request.cookies === undefined) {
+      return false;
     }
 
-    let allRecipes = (request, response) => {
-        db.recipes.getAll((error, allRecipes) => {
-            response.render('recipes/all', { allRecipes });
-        })
-    };
+    const SALT = 'not all lobsters are angry';
+    const loggedInHash = sha256(request.cookies.username + SALT);
 
-    let getRecipeById = (request, response) => {
-        db.recipes.getOne(request, (error, recipe) => {
+    return request.cookies.logged_in === loggedInHash;
+  };
 
-             let hideEdit = false;
+  const allRecipes = (request, response) => {
+    // eslint-disable-next-line no-shadow
+    db.recipes.getAll((error, allRecipes) => {
+      response.render('recipes/all', { allRecipes });
+    });
+  };
 
-             if (request.cookies.username !== recipe[0].contributor) {
-                hideEdit = true;
-             }
-            response.render('recipes/recipe', { recipe, hideEdit:hideEdit });
-        })
-    };
+  const getRecipeById = (request, response) => {
+    db.recipes.getOne(request, (error, recipe) => {
+      let hideEdit = false;
 
-    let recipeForm = (request, response) => {
+      if (request.cookies.username !== recipe[0].contributor) {
+        hideEdit = true;
+      }
+      response.render('recipes/recipe', { recipe, hideEdit });
+    });
+  };
 
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        response.render('recipes/new')
-    };
+  const recipeForm = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return response.render('recipes/new');
+  };
 
-    let createRecipe = (request, response) => {
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        db.recipes.createOne(request, (error, recipe) => {
-            // console.log(recipe);
-            response.redirect(`recipes/${recipe[0].id}`);
-        })
-    };
+  const createRecipe = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return db.recipes.createOne(request, (error, recipe) => {
+      // console.log(recipe);
+      response.redirect(`recipes/${recipe[0].id}`);
+    });
+  };
 
-    let editForm = (request, response) => {
+  const editForm = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return db.recipes.getOne(request, (error, recipe) => {
+      response.render('recipes/edit', { recipe });
+    });
+  };
 
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        db.recipes.getOne(request, (error, recipe) => {
-            response.render('recipes/edit', { recipe });
-        })
-    };
+  const updateRecipe = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return db.recipes.updateOne(request, (error, recipe) => {
+      response.redirect(`/recipes/${recipe[0].id}`);
+    });
+  };
 
-    let updateRecipe = (request, response) => {
+  const deleteForm = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return db.recipes.getOne(request, (error, recipe) => {
+      response.render('recipes/delete', { recipe });
+    });
+  };
 
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        db.recipes.updateOne(request, (error, recipe) => {
-            response.redirect(`/recipes/${recipe[0].id}`);
-        })
-    };
+  const deleteRecipe = (request, response) => {
+    if (!isLoggedIn(request)) {
+      return response.redirect('/login');
+    }
+    return db.recipes.deleteOne(request, () => {
+      response.redirect('/recipes');
+    });
+  };
 
-    let deleteForm = (request, response) => {
-
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        db.recipes.getOne(request, (error, recipe) => {
-            response.render('recipes/delete', { recipe });
-        })
-    };
-
-    let deleteRecipe = (request, response) => {
-
-        if (!isLoggedIn(request)) {
-            return response.redirect('/login');
-        }
-        db.recipes.deleteOne(request, (error, recipe) => {
-            response.redirect('/recipes');
-        })
-    };
-
-    return {
-        allRecipes: allRecipes,
-        getRecipeById: getRecipeById,
-        recipeForm: recipeForm,
-        createRecipe: createRecipe,
-        editForm: editForm,
-        updateRecipe: updateRecipe,
-        deleteForm: deleteForm,
-        deleteRecipe: deleteRecipe,
-    };
-
+  return {
+    allRecipes,
+    getRecipeById,
+    recipeForm,
+    createRecipe,
+    editForm,
+    updateRecipe,
+    deleteForm,
+    deleteRecipe,
+  };
 };

@@ -1,34 +1,39 @@
 const bcrypt = require('bcrypt');
+
 const saltRounds = 10;
 
 module.exports = (dbPoolInstance) => {
+  const createOne = (request, callback) => {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashPassword = bcrypt.hashSync(request.body.password, salt);
 
-    let createOne = (request, callback) => {
+    const queryString = 'INSERT INTO users (username, password) VALUES ($1, $2);';
+    const values = [request.body.username, hashPassword];
 
-        let salt = bcrypt.genSaltSync(saltRounds);
-        let hashPassword = bcrypt.hashSync(request.body.password, salt);
+    dbPoolInstance.query(queryString, values, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
+    });
+  };
 
-        const queryString = `INSERT INTO users (username, password) VALUES ($1, $2);`
-        const values = [request.body.username, hashPassword];
+  const userLogin = (request, callback) => {
+    const queryString = 'SELECT * FROM users WHERE username=$1';
+    const values = [request.body.username];
 
-        dbPoolInstance.query(queryString, values, (error, result) => {
-            error ? callback(error, null) : callback(null, result.rows);
-        })
-    };
+    dbPoolInstance.query(queryString, values, (error, result) => {
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
+    });
+  };
 
-    let userLogin = (request, callback) => {
-
-        const queryString = 'SELECT * FROM users WHERE username=$1'
-        const values = [request.body.username];
-
-        dbPoolInstance.query(queryString, values, (error, result) => {
-            error ? callback(error, null) : callback(null, result.rows);
-        })
-    };
-
-    return {
-        createOne,
-        userLogin,
-    };
-
+  return {
+    createOne,
+    userLogin,
+  };
 };

@@ -1,96 +1,91 @@
 window.onload = () => {
+  const addIngredientButton = document.getElementById('add-ingredient');
+  const addInstructionButton = document.getElementById('add-instruction');
+  const ingredientsEl = document.getElementById('ingredient-json');
+  const instructionsEl = document.getElementById('instruction-json');
+  const loginButton = document.getElementById('login-button');
+  const logoutButton = document.getElementById('logout-button');
 
-    const addIngredientButton = document.getElementById("add-ingredient");
-    const addInstructionButton = document.getElementById("add-instruction");
-    const ingredientsEl = document.getElementById('ingredient-json');
-    const instructionsEl = document.getElementById('instruction-json');
-    const loginButton = document.getElementById("login-button");
-    const logoutButton = document.getElementById("logout-button");
+  if (addIngredientButton) {
+    addIngredientButton.addEventListener('click', () => {
+      const ingredientCount = document.querySelectorAll('.ingredient-field').length;
 
-    if (addIngredientButton) {
+      const ingredientForm = document.getElementById('ingredient-form');
 
-        addIngredientButton.addEventListener("click", (e) => {
+      const newDiv = document.createElement('div');
 
-            const ingredientCount = document.querySelectorAll(".ingredient-field").length;
+      const newInput = document.createElement('input');
 
-            const ingredientForm = document.getElementById("ingredient-form");
+      newInput.className = 'ingredient-field';
+      newInput.name = `ingredient-${ingredientCount + 1}`;
+      ingredientForm.appendChild(newDiv);
+      newDiv.appendChild(newInput);
+    });
+  }
 
-            const newDiv = document.createElement("div");
+  if (addInstructionButton) {
+    addInstructionButton.addEventListener('click', () => {
+      const instructionCount = document.querySelectorAll('.instruction-field').length;
 
-            const newInput = document.createElement("input");
+      const instructionForm = document.getElementById('instruction-form');
 
-            newInput.className = "ingredient-field";
-            newInput.name = `ingredient-${ingredientCount+1}`;
-            ingredientForm.appendChild(newDiv);
-            newDiv.appendChild(newInput);
-        });
-    };
+      const newDiv = document.createElement('div');
 
-    if (addInstructionButton) {
+      const newInput = document.createElement('textarea');
 
-        addInstructionButton.addEventListener("click", (e) => {
+      newInput.className = 'instruction-field';
+      newInput.name = `instruction-${instructionCount + 1}`;
+      newInput.cols = '40';
+      newInput.rows = '2';
+      newInput.placeholder = `Step ${instructionCount + 1}`;
+      instructionForm.appendChild(newDiv);
+      newDiv.appendChild(newInput);
+    });
+  }
 
-            const instructionCount = document.querySelectorAll(".instruction-field").length;
+  if (ingredientsEl) {
+    const ingredientsString = ingredientsEl.dataset.ingredients;
+    const ingredientsObj = JSON.parse(ingredientsString);
+    let ingredientCount = 0;
+    const ingredientForm = document.getElementById('ingredient-form');
 
-            const instructionForm = document.getElementById("instruction-form");
+    ingredientsObj.items.forEach((ig) => {
+      const newDiv = document.createElement('div');
+      const newInput = document.createElement('input');
+      newInput.value = ig;
+      newInput.className = 'ingredient-field';
+      newInput.name = `ingredient-${ingredientCount + 1}`;
+      ingredientForm.appendChild(newDiv);
+      newDiv.appendChild(newInput);
+      ingredientCount += 1;
+    });
+  }
 
-            const newDiv = document.createElement("div");
+  if (instructionsEl) {
+    const instructionsString = instructionsEl.dataset.instructions;
+    const instructionsObj = JSON.parse(instructionsString);
+    let instructionCount = 0;
+    const instructionForm = document.getElementById('instruction-form');
 
-            const newInput = document.createElement("textarea");
+    instructionsObj.steps.forEach((step) => {
+      const newDiv = document.createElement('div');
+      const newInput = document.createElement('textarea');
+      newInput.value = step;
+      newInput.className = 'instruction-field';
+      newInput.name = `instruction-${instructionCount + 1}`;
+      newInput.cols = '40';
+      newInput.rows = '2';
+      instructionForm.appendChild(newDiv);
+      newDiv.appendChild(newInput);
+      instructionCount += 1;
+    });
+  }
 
-            newInput.className = "instruction-field";
-            newInput.name = `instruction-${instructionCount+1}`;
-            newInput.cols = "40";
-            newInput.rows = "2";
-            newInput.placeholder = `Step ${instructionCount+1}`;
-            instructionForm.appendChild(newDiv);
-            newDiv.appendChild(newInput);
-        });
-    };
-
-    if (ingredientsEl) {
-        let ingredientsString = ingredientsEl.dataset.ingredients;
-        let ingredientsObj = JSON.parse(ingredientsString);
-        let ingredientCount = 0;
-        const ingredientForm = document.getElementById("ingredient-form");
-
-        ingredientsObj.items.forEach((ig) => {
-            let newDiv = document.createElement("div");
-            let newInput = document.createElement("input");
-            newInput.value = ig;
-            newInput.className = "ingredient-field";
-            newInput.name = `ingredient-${ingredientCount+1}`;
-            ingredientForm.appendChild(newDiv);
-            newDiv.appendChild(newInput);
-            ingredientCount++;
-        })
-    };
-
-    if (instructionsEl) {
-        let instructionsString = instructionsEl.dataset.instructions;
-        let instructionsObj = JSON.parse(instructionsString);
-        let instructionCount = 0;
-        const instructionForm = document.getElementById("instruction-form");
-
-        instructionsObj.steps.forEach((step) => {
-            let newDiv = document.createElement("div");
-            let newInput = document.createElement("textarea");
-            newInput.value = step;
-            newInput.className = "instruction-field";
-            newInput.name = `instruction-${instructionCount+1}`;
-            newInput.cols = "40";
-            newInput.rows = "2";
-            instructionForm.appendChild(newDiv);
-            newDiv.appendChild(newInput);
-            instructionCount++;
-        });
-    };
-
-    if (document.cookie) {
-        loginButton.style.display = "none";
-        logoutButton.style.display = "inline";
-    } else {
-        loginButton.style.display = "inline";
-        logoutButton.style.display = "none";
-    };
-}
+  if (document.cookie) {
+    loginButton.style.display = 'none';
+    logoutButton.style.display = 'inline';
+  } else {
+    loginButton.style.display = 'inline';
+    logoutButton.style.display = 'none';
+  }
+};
