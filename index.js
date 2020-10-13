@@ -19,13 +19,13 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.use(express.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 // Set react-views to be the default view engine
 const reactEngine = require('express-react-views').createEngine();
 
-app.set('views', __dirname + '/views');
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 
@@ -60,15 +60,16 @@ setRoutesFunction(app, allModels);
  * ===================================
  */
 const PORT = process.env.PORT || 3000;
+// eslint-disable-next-line no-console
+const server = app.listen(PORT, () => console.log(`~~~ Tuning in to the waves of port ${PORT} ~~~`));
 
-const server = app.listen(PORT, () => console.log('~~~ Tuning in to the waves of port '+PORT+' ~~~'));
-
-let onClose = function(){
-
+const onClose = function () {
   server.close(() => {
-    console.log('Process terminated')
-    allModels.pool.end( () => console.log('Shut down db connection pool'));
-  })
+    // eslint-disable-next-line no-console
+    console.log('Process terminated');
+    // eslint-disable-next-line no-console
+    allModels.pool.end(() => console.log('Shut down db connection pool'));
+  });
 };
 
 process.on('SIGTERM', onClose);
