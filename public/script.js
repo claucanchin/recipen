@@ -7,7 +7,7 @@ window.onload = () => {
   const logoutButton = document.getElementById('logout-button');
 
   if (addIngredientButton) {
-    addIngredientButton.addEventListener('click', (e) => {
+    addIngredientButton.addEventListener('click', () => {
       const ingredientCount = document.querySelectorAll('.ingredient-field').length;
 
       const ingredientForm = document.getElementById('ingredient-form');
@@ -24,7 +24,7 @@ window.onload = () => {
   }
 
   if (addInstructionButton) {
-    addInstructionButton.addEventListener('click', (e) => {
+    addInstructionButton.addEventListener('click', () => {
       const instructionCount = document.querySelectorAll('.instruction-field').length;
 
       const instructionForm = document.getElementById('instruction-form');
@@ -57,7 +57,7 @@ window.onload = () => {
       newInput.name = `ingredient-${ingredientCount + 1}`;
       ingredientForm.appendChild(newDiv);
       newDiv.appendChild(newInput);
-      ingredientCount++;
+      ingredientCount += 1;
     });
   }
 
@@ -77,7 +77,7 @@ window.onload = () => {
       newInput.rows = '2';
       instructionForm.appendChild(newDiv);
       newDiv.appendChild(newInput);
-      instructionCount++;
+      instructionCount += 1;
     });
   }
 

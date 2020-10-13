@@ -22,7 +22,11 @@ module.exports = (dbPoolInstance) => {
     const queryString = `SELECT * FROM recipes WHERE id=${request.params.id}`;
 
     dbPoolInstance.query(queryString, (error, result) => {
-      error ? callback(error, null) : callback(null, result.rows);
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
     });
   };
 
@@ -36,7 +40,7 @@ module.exports = (dbPoolInstance) => {
       if (!curr) {
         break;
       }
-      ingredientCount++;
+      ingredientCount += 1;
       ingredients.push(curr);
     }
 
@@ -46,7 +50,7 @@ module.exports = (dbPoolInstance) => {
       if (!curr) {
         break;
       }
-      instructionCount++;
+      instructionCount += 1;
       instructions.push(curr);
     }
 
@@ -56,7 +60,11 @@ module.exports = (dbPoolInstance) => {
     const values = [request.body.name, request.body.description, `/images/${request.file.originalname}`, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }, currUser];
 
     dbPoolInstance.query(queryString, values, (error, result) => {
-      error ? callback(error, null) : callback(null, result.rows);
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
     });
   };
 
@@ -70,7 +78,7 @@ module.exports = (dbPoolInstance) => {
       if (!curr) {
         break;
       }
-      ingredientCount++;
+      ingredientCount += 1;
       ingredients.push(curr);
     }
 
@@ -80,7 +88,7 @@ module.exports = (dbPoolInstance) => {
       if (!curr) {
         break;
       }
-      instructionCount++;
+      instructionCount += 1;
       instructions.push(curr);
     }
 
@@ -90,15 +98,26 @@ module.exports = (dbPoolInstance) => {
       const values = [request.body.name, request.body.description, `/images/${request.file.originalname}`, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }];
 
       dbPoolInstance.query(queryString, values, (error, result) => {
-        error ? callback(error, null) : callback(null, result.rows);
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, result.rows);
+        }
       });
     } else {
       const queryString = `UPDATE recipes SET name=$1, description=$2, prep_time=$3, cook_time=$4, ingredients=$5, instructions=$6 WHERE id=${request.params.id} RETURNING *`;
 
-      const values = [request.body.name, request.body.description, request.body.prep_time, request.body.cook_time, { items: ingredients }, { steps: instructions }];
+      const req = request.body;
+      const values = [req.name, req.description, req.prep_time, req.cook_time,
+        { items: ingredients },
+        { steps: instructions }];
 
       dbPoolInstance.query(queryString, values, (error, result) => {
-        error ? callback(error, null) : callback(null, result.rows);
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, result.rows);
+        }
       });
     }
   };
@@ -107,7 +126,11 @@ module.exports = (dbPoolInstance) => {
     const queryString = `DELETE FROM recipes WHERE id=${request.params.id}RETURNING *`;
 
     dbPoolInstance.query(queryString, (error, result) => {
-      error ? callback(error, null) : callback(null, result.rows);
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
     });
   };
 

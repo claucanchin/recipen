@@ -11,7 +11,11 @@ module.exports = (dbPoolInstance) => {
     const values = [request.body.username, hashPassword];
 
     dbPoolInstance.query(queryString, values, (error, result) => {
-      error ? callback(error, null) : callback(null, result.rows);
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
     });
   };
 
@@ -20,7 +24,11 @@ module.exports = (dbPoolInstance) => {
     const values = [request.body.username];
 
     dbPoolInstance.query(queryString, values, (error, result) => {
-      error ? callback(error, null) : callback(null, result.rows);
+      if (error) {
+        callback(error, null);
+      } else {
+        callback(null, result.rows);
+      }
     });
   };
 

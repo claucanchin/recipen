@@ -1,7 +1,7 @@
 const sha256 = require('js-sha256');
 
 module.exports = (db) => {
-  const isLoggedIn = function (request) {
+  const isLoggedIn = (request) => {
     if (request.cookies === undefined) {
       return false;
     }
@@ -13,6 +13,7 @@ module.exports = (db) => {
   };
 
   const allRecipes = (request, response) => {
+    // eslint-disable-next-line no-shadow
     db.recipes.getAll((error, allRecipes) => {
       response.render('recipes/all', { allRecipes });
     });
@@ -33,14 +34,14 @@ module.exports = (db) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    response.render('recipes/new');
+    return response.render('recipes/new');
   };
 
   const createRecipe = (request, response) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    db.recipes.createOne(request, (error, recipe) => {
+    return db.recipes.createOne(request, (error, recipe) => {
       // console.log(recipe);
       response.redirect(`recipes/${recipe[0].id}`);
     });
@@ -50,7 +51,7 @@ module.exports = (db) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    db.recipes.getOne(request, (error, recipe) => {
+    return db.recipes.getOne(request, (error, recipe) => {
       response.render('recipes/edit', { recipe });
     });
   };
@@ -59,7 +60,7 @@ module.exports = (db) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    db.recipes.updateOne(request, (error, recipe) => {
+    return db.recipes.updateOne(request, (error, recipe) => {
       response.redirect(`/recipes/${recipe[0].id}`);
     });
   };
@@ -68,7 +69,7 @@ module.exports = (db) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    db.recipes.getOne(request, (error, recipe) => {
+    return db.recipes.getOne(request, (error, recipe) => {
       response.render('recipes/delete', { recipe });
     });
   };
@@ -77,7 +78,7 @@ module.exports = (db) => {
     if (!isLoggedIn(request)) {
       return response.redirect('/login');
     }
-    db.recipes.deleteOne(request, (error, recipe) => {
+    return db.recipes.deleteOne(request, () => {
       response.redirect('/recipes');
     });
   };

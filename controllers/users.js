@@ -7,7 +7,7 @@ module.exports = (db) => {
   };
 
   const registered = (request, response) => {
-    db.users.createOne(request, (error, users) => {
+    db.users.createOne(request, (error) => {
       if (error) {
         response.send('Error Registering');
       } else {
@@ -30,7 +30,7 @@ module.exports = (db) => {
           if (visits === undefined) {
             visits = 1;
           } else {
-            visits = parseInt(visits) + 1;
+            visits = parseInt(visits, 10) + 1;
           }
           response.cookie('visits', visits);
 
@@ -42,11 +42,9 @@ module.exports = (db) => {
 
           response.redirect('/recipes');
         } else {
-          console.log('Password is incorrect.');
           response.send('Incorrect Username or Password.');
         }
       } else {
-        console.log('Username is incorrect.');
         response.send('Incorrect Username or Password.');
       }
     });

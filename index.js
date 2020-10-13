@@ -63,7 +63,7 @@ const PORT = process.env.PORT || 3000;
 // eslint-disable-next-line no-console
 const server = app.listen(PORT, () => console.log(`~~~ Tuning in to the waves of port ${PORT} ~~~`));
 
-const onClose = function () {
+const onClose = () => {
   server.close(() => {
     // eslint-disable-next-line no-console
     console.log('Process terminated');
